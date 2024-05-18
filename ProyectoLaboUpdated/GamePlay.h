@@ -14,6 +14,7 @@ private:
 	static GamePlay* _currentInstance;
 	TorreLab _torre;
 	HackerTrainee _hacker;
+	Proyectil _prueba;
 	std::list<Proyectil> _proyectiles;
 
 public:
@@ -22,6 +23,6 @@ public:
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-	void shoot(sf::Vector2f position, Proyectil::Direction direction);
+	void shoot(sf::Vector2f position);
 };
 

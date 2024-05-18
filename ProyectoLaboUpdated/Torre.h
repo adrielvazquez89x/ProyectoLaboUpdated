@@ -23,6 +23,7 @@ protected:
 	int _alcance;
 	int _velocidadAtaque;
 	int _tipoAtaque;
+	unsigned int _cooldown;
 
 	//Upgrades
 	int _cantidadUpgrades;
@@ -42,12 +43,13 @@ public:
 	int getAlcance();
 	int getVelocidadAtaque();
 	int getTipoAtaque();
+	int getCooldown();
 
 	int getCantidadUpgrades();
 
 	// Para desarrollo:
 
-	void setPosition(float, float);
+	//void setPosition(float, float);
 
 	//Setters
 	void setRango();
@@ -56,6 +58,7 @@ public:
 	void setCostoUpgrade(float);
 	void setValorVenta(float);
 	void setDanioCausante(float);
+	void setCooldown(int valor = 0);
 	void setAlcance(int);
 
 	//Comportamiento

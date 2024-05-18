@@ -5,12 +5,13 @@ GamePlay* GamePlay::_currentInstance = nullptr;
 
 GamePlay::GamePlay()
 {
+
 }
 
 GamePlay& GamePlay::getInstance()
 {
 	if (GamePlay::_currentInstance == nullptr)
-	{
+	{       
 		GamePlay::_currentInstance = new GamePlay();
 	}
 	return *GamePlay::_currentInstance;
@@ -18,11 +19,14 @@ GamePlay& GamePlay::getInstance()
 
 void GamePlay::update()
 {
-	
 	_hacker.update();
-	_hacker.setPosition(100, 100);
-	_torre.setPosition(400, 300);
 	_torre.update(_hacker);
+	//_prueba.update();
+	
+	for (Proyectil& proyectil : _proyectiles)
+	{
+		proyectil.update();
+	}
 
 	/*
 	auto it = _proyectiles.begin();
@@ -30,25 +34,37 @@ void GamePlay::update()
 	{
 		Proyectil& proyectil = *it;
 		proyectil.update();
-		if(proyectil.getPosition().x )
+		
+		if (proyectil.estaColisionando(_hacker))
+		{
+			it = _proyectiles.erase(it);
+		}
+		else
+		{
+			++it;
+		}
 
 	}
 	*/
+
 }
 
 
 void GamePlay::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(_torre, states);
 	target.draw(_hacker, states);
+	target.draw(_torre, states);
+	target.draw(_prueba, states);
 
 	for (const Proyectil& bullet : _proyectiles)
 	{
 		target.draw(bullet, states);
 	}
+	
 }
 
-void GamePlay::shoot(sf::Vector2f position, Proyectil::Direction direction)
+void GamePlay::shoot(sf::Vector2f position)
 {
-	_proyectiles.push_back(Proyectil(position, direction, 10));
+	//LO hardcodeamos de mientrras para ver si funca
+	_proyectiles.push_back(Proyectil(position, _hacker.getPosition(), 10));
 }

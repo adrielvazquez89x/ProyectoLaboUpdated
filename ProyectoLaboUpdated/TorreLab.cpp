@@ -10,6 +10,9 @@ TorreLab::TorreLab()
 	_nombre = "torrecita";
 	//Seteamos el eje para que sea el centro del sprite.
 	_sprite.setOrigin(_sprite.getLocalBounds().width / 2, _sprite.getLocalBounds().height / 2);
+
+	setPosition(400, 300);
+	
 	//Rango de ataque:
 	//Seteo del radio del rango.
 	_rango.setRadius(150);
@@ -29,6 +32,7 @@ TorreLab::TorreLab()
 	_velocidadAtaque = 3;
 	_tipoAtaque = 1;
 	_cantidadUpgrades = 2;
+	_cooldown = 0;
 
 }
 
